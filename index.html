@@ -290,62 +290,62 @@
 					
 					this.box.innerHTML = str;
 					document.body.appendChild(this.box);
-					this.boardDiv = document.querySelectorAll('#box > div');
+					this.boardDiv = document.querySelectorAll('#box > div');//box里所有的小方块
 				},
 				// 创建方块
 				createBlock: function() {
-					var block = new Array(4);
-					var num = Math.floor(Math.random()*7);
+					var block = new Array(4);//[{x:-1,y:3},{x:-1,y:3},{x:-1,y:3},{x:-1,y:3}]x代表第几行,y代表第几列,方块要在看不到的地方生成,所以x是负数
+					var num = Math.floor(Math.random()*7);//生成一个0~6之间的随机数
 					switch(num) {
 						case 0:{
-		                    block[0] = {x:-2, y:4};//**
-		                    block[1] = {x:-1, y:4};//**
-		                    block[2] = {x:-2, y:5};
-		                    block[3] = {x:-1, y:5};
-		                    break;
-		                }
-		                case 1:{
-		                    block[0] = {x:-1, y:3};//****
-		                    block[1] = {x:-1, y:4};
-		                    block[2] = {x:-1, y:5};
-		                    block[3] = {x:-1, y:6};
-		                    break;
-		                }
-		                case 2:{
-		                    block[0] = {x:-3, y:5};// *
-		                    block[1] = {x:-2, y:4};//**
-		                    block[2] = {x:-2, y:5};//*
-		                    block[3] = {x:-1, y:4};
-		                    break;
-		                }
-		                case 3:{
-		                    block[0] = {x:-3, y:4};//*
-		                    block[1] = {x:-2, y:4};//**
-		                    block[2] = {x:-2, y:5};// *
-		                    block[3] = {x:-1, y:5};
-		                    break;
-		                }
-		                case 4:{
-		                    block[0] = {x:-2, y:4};//*
-		                    block[1] = {x:-1, y:4};//***
-		                    block[2] = {x:-1, y:5};
-		                    block[3] = {x:-1, y:6};
-		                    break;
-		                }
-		                case 5:{
-		                    block[0] = {x:-3, y:4};//*
-		                    block[1] = {x:-2, y:4};//*
-		                    block[2] = {x:-1, y:4};//**
-		                    block[3] = {x:-1, y:5};
-		                    break;
-		                }
-		                case 6:{
-		                    block[0] = {x:-2, y:5};// *
-		                    block[1] = {x:-1, y:4};//***
-		                    block[2] = {x:-1, y:5};
-		                    block[3] = {x:-1, y:6};
-		                    break;
-		                }
+                block[0] = {x:-2, y:4};//**
+                block[1] = {x:-1, y:4};//**
+                block[2] = {x:-2, y:5};
+                block[3] = {x:-1, y:5};
+                break;
+            }
+            case 1:{
+                block[0] = {x:-1, y:3};//****
+                block[1] = {x:-1, y:4};
+                block[2] = {x:-1, y:5};
+                block[3] = {x:-1, y:6};
+                break;
+            }
+            case 2:{
+                block[0] = {x:-3, y:5};// *
+                block[1] = {x:-2, y:4};//**
+                block[2] = {x:-2, y:5};//*
+                block[3] = {x:-1, y:4};
+                break;
+            }
+            case 3:{
+                block[0] = {x:-3, y:4};//*
+                block[1] = {x:-2, y:4};//**
+                block[2] = {x:-2, y:5};// *
+                block[3] = {x:-1, y:5};
+                break;
+            }
+            case 4:{
+                block[0] = {x:-2, y:4};//*
+                block[1] = {x:-1, y:4};//***
+                block[2] = {x:-1, y:5};
+                block[3] = {x:-1, y:6};
+                break;
+            }
+            case 5:{
+                block[0] = {x:-3, y:4};//*
+                block[1] = {x:-2, y:4};//*
+                block[2] = {x:-1, y:4};//**
+                block[3] = {x:-1, y:5};
+                break;
+            }
+            case 6:{
+                block[0] = {x:-2, y:5};// *
+                block[1] = {x:-1, y:4};//***
+                block[2] = {x:-1, y:5};
+                block[3] = {x:-1, y:6};
+                break;
+            }
 					}
 					return block;
 				},
@@ -689,14 +689,15 @@
 				}
 			}
 			tetris.init();
-			oBtn.onclick = tetris.pause;
-//			oReset.onclick = oRestart.onclick = tetris.reStart;
+			
+			
+			oBtn.onclick = tetris.pause;//暂停
 			oReset.onclick = oRestart.onclick = function() {
-				window.location.reload();
+				window.location.reload();//重新开始
 			}
 			document.onkeydown = tetris.keyControl;
 			document.onkeyup = function(e) {
-				if(e.keyCode == 32) tetris.quick = false;
+				if(e.keyCode == 32) tetris.quick = false;//空格抬起时让快速落下的开关为false
 			}
 		</script>
 	</body>
